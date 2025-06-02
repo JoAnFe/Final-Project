@@ -7,7 +7,7 @@ Module: CM3040 – Physical Computing and the Internet of Things
 
 ⸻
 
-🧠 Project Idea
+Project
 
 Develop a framework and technological solution to monitor, manage, and control IoT devices in a trusted network, suitable for safety-critical systems such as:
 	•	Smart grids
@@ -17,7 +17,7 @@ Develop a framework and technological solution to monitor, manage, and control I
 
 ⸻
 
-📚 Background & Context
+Background & Context
 
 As IoT ecosystems grow, managing them securely becomes increasingly complex due to:
 	•	Heterogeneous device types
@@ -27,7 +27,7 @@ As IoT ecosystems grow, managing them securely becomes increasingly complex due 
 
 ⸻
 
-🔍 Recommended Research Sources
+Recommended Research Sources
 	1.	Access Control Scheme for IoT Sensor Cloud Systems
 S. A. Chaudhry et al., IEEE Access, 2020
 DOI: 10.1109/ACCESS.2020.3012121
@@ -40,7 +40,7 @@ DOI: 10.1109/ACCESS.2024.3407353
 
 ⸻
 
-🎯 Final Outcome
+Final Outcome
 	•	A dashboard that integrates multiple IoT devices
 	•	Customisable security policies
 	•	Real-time monitoring and visualisation
@@ -49,7 +49,7 @@ DOI: 10.1109/ACCESS.2024.3407353
 
 ⸻
 
-🧪 Prototype Features
+Prototype Features
 	•	Client-server architecture
 	•	User interface on client devices to manage network access
 	•	Devices linked through secure provisioning process
@@ -58,7 +58,7 @@ DOI: 10.1109/ACCESS.2024.3407353
 
 ⸻
 
-🛠️ Relevant Techniques & Concepts
+Relevant Techniques & Concepts
 	•	Secure software design
 	•	Web application development
 	•	Cloud architecture & deployment
@@ -68,13 +68,13 @@ DOI: 10.1109/ACCESS.2024.3407353
 
 ⸻
 
-🧾 Expected Output
+Expected Output
 	•	Web service and/or hardware module to monitor and control IoT device behaviour
 	•	A functional trusted IoT network prototype
 
 ⸻
 
-🧪 Evaluation Criteria
+Evaluation Criteria
 	•	Review of state-of-the-art frameworks
 	•	Development of a proof-of-concept solution
 	•	Demonstrated monitoring and control of devices
@@ -82,20 +82,20 @@ DOI: 10.1109/ACCESS.2024.3407353
 
 ⸻
 
-🎓 Grade Expectations
+Grade Expectations
 
-✅ Pass (3rd)
+Pass (3rd)
 	•	Basic understanding of IoT device security frameworks
 	•	Simulated dashboard with basic device monitoring
 	•	Simple enforcement of example policy rules
 
-✅ Good (2:2 – 2:1)
+Good (2:2 – 2:1)
 	•	Clear research of state-of-the-art approaches
 	•	Implementation of a custom security framework
 	•	Monitoring and automated actions enabled
 	•	Applied to real or emulated IoT devices
 
-✅ Outstanding (1st)
+Outstanding (1st)
 	•	Original contribution to trusted IoT device management
 	•	Real-time management and monitoring of real devices
 	•	Full remote control capabilities
@@ -103,7 +103,7 @@ DOI: 10.1109/ACCESS.2024.3407353
 
 ⸻
 
-✅ Checklist: Tasks to Achieve Full Marks
+Checklist: Tasks to Achieve Full Marks
 	•	Define a clear security-focused use case (e.g. smart home, smart grid)
 	•	Review and critically analyse state-of-the-art research
 	•	Develop a custom security framework for IoT device onboarding and control
