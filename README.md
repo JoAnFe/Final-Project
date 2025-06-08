@@ -114,3 +114,22 @@ Checklist: Tasks to Achieve Full Marks
 	•	Demonstrate remote device management functionality
 	•	Evaluate and reflect on the effectiveness of the framework
 	•	Prepare clear documentation and testing walkthroughs
+
+
+---
+
+
+Submit a draft of some aspects of your project report. 
+The report must consist of four chapters, and have a total maximum word limit of 6000 words 
+(excluding title page, reference list, etc). 
+
+The chapters required are:
+	•	An introduction: this explains the project concept and motivation for the project (this can be based on your proposal). This must also state which project template you are using (max 1000 words).
+ 	•	A literature review: this is a revised version of the document that you submitted for your second peer review (max 2500 words).
+  	•	A design: this is a revised version of the document that you submitted for your third peer review (max 2000 words).
+   	•	A feature prototype: this is the only new element of the submission, details below (max 1500 words).
+
+The per-chapter maximums are strict, as is the overall word count. Note that the total of the four chapter word counts is 7000 --- this is not an error but it allows you flexibility in the lengths of each chapter, and lets you balance the document to some extent.
+
+aaaaand 
+a video
