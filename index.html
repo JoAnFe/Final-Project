@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MQTT Subscribed Topic</title>
+    <!-- Paho MQTT JavaScript Client CDN -->
+    <script src="https://unpkg.com/paho-mqtt@1.1.0/paho-mqtt.js"></script>
+</head>
+<body>
+    <div>
+        <h1>MQTT Subscribed Topic</h1>
+
+        <p>
+            This page is subscribed to the topic: <br>
+            <span id="displayTopic">iot/device/health</span>
+        </p>
+
+        <div id="connectionStatus">
+            Connecting to MQTT broker...
+        </div>
+    </div>
+
+    <script>
+        // --- MQTT Configuration for HiveMQ Cloud ---
+        const BROKER_HOST = '23957af5fd4748b78fc9df429929da53.s1.eu.hivemq.cloud';
+        const BROKER_PORT = 8883;                 // Common WSS port for HiveMQ Cloud. Try 8000 if 8884 fails.
+        const MQTT_TOPIC = 'iot/device/health';    // Topic to subscribe to
+       // const CLIENT_ID = 'web_dashboard_' + Math.random().toString(16).substr(2, 8); // Unique client ID
+
+        // --- HiveMQ Cloud Authentication
+        const USERNAME = 'hivemq.webclient.1749983458665'; 
+        const PASSWORD = '9raY<Ls63N%mKb4Q&x!R'; 
+
+        // --- DOM Elements ---
+        const connectionStatusDiv = document.getElementById('connectionStatus');
+        const displayTopicSpan = document.getElementById('displayTopic');
+
+        // Ensure the topic is displayed initially
+        displayTopicSpan.textContent = MQTT_TOPIC;
+
+        // --- MQTT Client Instance ---
+        let client = null;
+
+        // --- Utility Functions ---
+        /**
+         * Updates the connection status message on the dashboard.
+         * @param {string} message - The status message to display.
+         * @param {string} type - The type of status (info, success, error).
+         */
+        function updateConnectionStatus(message, type = 'info') {
+            connectionStatusDiv.textContent = message;
+            // No class manipulation here, as styling is removed
+        }
+
+        /**
+         * Initializes the MQTT client and connects to the broker.
+         */
+        function connectMqtt() {
+            const CLIENT_ID = 'simple_topic_display_' + Math.random().toString(16).substr(2, 8); // Unique client ID
+            client = new Paho.MQTT.Client(BROKER_HOST, Number(BROKER_PORT), '/mqtt', CLIENT_ID);
+
+            // Set callback handlers
+            client.onConnectionLost = onConnectionLost;
+            client.onMessageArrived = onMessageArrived; // Still need this, but it won't display anything
+
+            // Connect the client with authentication and SSL
+            updateConnectionStatus('Connecting to MQTT broker...', 'info');
+            client.connect({
+                onSuccess: onConnect,
+                onFailure: onFailure,
+                userName: USERNAME,
+                password: PASSWORD,
+                useSSL: true,
+            });
+        }
+
+        // --- MQTT Callbacks ---
+
+        /**
+         * Called when the connection to the MQTT broker is successful.
+         */
+        function onConnect() {
+            updateConnectionStatus('Connected to MQTT broker!', 'success');
+            console.log('Connected to MQTT broker!');
+            client.subscribe(MQTT_TOPIC);
+            console.log(`Subscribed to topic: ${MQTT_TOPIC}`);
+        }
+
+        /**
+         * Called when the connection to the MQTT broker is lost.
+         * @param {object} responseObject - The response object containing error details.
+         */
+        function onConnectionLost(responseObject) {
+            if (responseObject.errorCode !== 0) {
+                updateConnectionStatus(`Connection lost: ${responseObject.errorMessage}. Reconnecting...`, 'error');
+                console.error(`Connection lost: ${responseObject.errorMessage}`);
+                setTimeout(connectMqtt, 5000); // Attempt to reconnect after 5 seconds
+            }
+        }
+
+        /**
+         * Called when a message arrives from the MQTT broker.
+         * For this simple page, we just log it, but don't display the content.
+         * @param {object} message - The MQTT message object.
+         */
+        function onMessageArrived(message) {
+            console.log(`Message arrived on topic "${message.destinationName}": ${message.payloadString}`);
+            // No display logic needed for this simple page
+        }
+
+        /**
+         * Called when the connection to the MQTT broker fails.
+         * @param {object} responseObject - The response object containing error details.
+         */
+        function onFailure(responseObject) {
+            updateConnectionStatus(`Failed to connect: ${responseObject.errorMessage}. Check credentials and broker info. Retrying...`, 'error');
+            console.error(`Failed to connect to MQTT broker: ${responseObject.errorMessage}`);
+            if (responseObject.errorMessage.includes("Not Authorized") || responseObject.errorMessage.includes("401")) {
+                console.error("Authentication failed. Please ensure your HiveMQ Cloud username and password are correct.");
+            }
+            setTimeout(connectMqtt, 5000); // Attempt to reconnect after 5 seconds
+        }
+
+        // --- Initialize on Window Load ---
+        window.onload = function() {
+            connectMqtt();
+        };
+    </script>
+</body>
+</html>
