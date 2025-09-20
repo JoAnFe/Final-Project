@@ -15,8 +15,9 @@ def _ensure_fit():
 
 def anomaly_flag(r) -> bool:
     _ensure_fit()
-    temperature = r.temperature if r.temperature is not None else 22.0
-    humidity = r.humidity if r.humidity is not None else 50.0
-    soil_moisture = r.soil_moisture if r.soil_moisture is not None else 0.3
-    x = np.array([[temperature, humidity, soil_moisture]])
+    x = np.array([[
+        r.temperature if r.temperature is not None else 22.0,
+        r.humidity if r.humidity is not None else 50.0,
+        r.soil_moisture if r.soil_moisture is not None else 0.3,
+    ]])
     return model.predict(x)[0] == -1
