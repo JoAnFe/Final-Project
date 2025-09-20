@@ -1,0 +1,11 @@
+rules:
+  - id: soil-moisture-low
+    metric: soil_moisture
+    condition: "<"
+    threshold: 20
+    action: alert
+  - id: temperature-high
+    metric: temperature
+    condition: ">"
+    threshold: 35
+    action: command:cooling
