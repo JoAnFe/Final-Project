@@ -1,0 +1,8 @@
+provisioning:
+  enr_salt_hex: "5e4b9a4d8b77d1b2c3a4e5f6a7b8c9d0"
+mqtt:
+  host: "mosquitto"
+  port: 8883
+  base_topic: "agri"
+backend:
+  url: "http://backend:8000"

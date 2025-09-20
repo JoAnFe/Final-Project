@@ -1,0 +1,15 @@
+[ ca ]
+default_ca = my_ca
+
+[ my_ca ]
+private_key = ca/ca.key
+certificate = ca/ca.crt
+new_certs_dir = devices/issued
+database = index.txt
+serial = serial
+default_crl_days = 30
+default_md = sha256
+policy = policy_loose
+
+[ policy_loose ]
+commonName = supplied
